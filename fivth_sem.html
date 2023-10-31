@@ -119,15 +119,6 @@
         </div>
     
     </fieldset>
-    <fieldset>
-        <legend>OBTAINED</legend>
-        <label>TOTAL</label><br>
-        <input id="total" type="text" placeholder="TOTAL"><br>
-        <label>CGPA</label><br>
-        <input id="cgpa" type="text" placeholder="CGPA"><br>
-        <label>PERCENTAGE</label><br>
-        <input id="percentage" type="text" placeholder="PERCENTAGE">
-    </fieldset>
     </form>
 
     <script>
@@ -148,9 +139,6 @@
                         +parseInt(m6)+parseInt(m7)+parseInt(m8);
 
             let percentage=(total/800)*100;
-
-            document.getElementById('total').value=total;
-            document.getElementById('percentage').value=percentage;
 
 
             function points(mark,credit){
@@ -186,7 +174,7 @@
             let cgpa = points(m,3)+points(m1,4)+points(m2,4)+points(m3,1)+points(m4,3)+points(m5,2)+
                             points(m6,3)+points(m7,2)+points(m8,0);
             
-            document.getElementById('cgpa').value=cgpa/22;
+            alert("Total = " + total +"\nPercentage = " + percentage + "\nCGPA = " + cgpa/22);
 
         })
         document.getElementById('reset').addEventListener('click', function(e){
