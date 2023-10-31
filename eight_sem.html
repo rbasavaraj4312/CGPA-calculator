@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cgpa claculator</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        * a{
+            text-decoration: none;
+            color: black;
+        }
+        body{
+            background-color: rgb(234, 219, 255);
+        }
+        h1{
+            font-size: 38px;
+            text-align: center;
+            text-transform: uppercase;
+            word-spacing: 15px;
+            letter-spacing: 3px;
+            padding: 35px 15px 5px 15px;
+            text-decoration: underline;
+        }
+        p{
+            text-align: center;
+            font-weight: 650;
+        }
+        fieldset{
+            margin: 15px;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        legend{
+            text-align: center;
+            font-size: 21px;
+            font-weight: 600;
+        }
+        label{
+            font-size: 20px;
+        }
+        input{
+            margin: 8px 45px;
+            padding: 3px 10px;
+            font-size: 19px;
+            border: 1.5px solid black;
+            border-radius: 5px;
+            background-color: rgb(244, 235, 255);
+        }
+        .btn{
+            margin: 15px 20px 10px 65px;
+        }
+        button{
+            margin: 5px;
+            padding: 10px 50px;
+            font-weight: 650;
+            background-color: rgb(158, 227, 53);
+            border-radius: 15px;
+        }
+        @media screen and (min-width: 900px){
+            body{
+                padding: 0px 450px;
+            }
+            fieldset{
+                padding: 50px;
+            }
+            input{
+                margin-left: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>the cgpa claculator</h1><br>
+    <p>(FOR 8TH SEM)</p>
+    <form id="sheet">
+    <fieldset>
+        <legend>MARKS SCORED:</legend>
+        
+        <label>Professional Elective (Online Courses) Only through(NPTEL):-</label><br>
+        <input class="marks" id="Professional Elective (Online Courses) Only through(NPTEL)" type="number" placeholder="Professional Elective (Online Courses) Only through(NPTEL)" required autofocus><br>
+
+        <label>Open Elective (Online Courses) Only through (NPTEL):-</label><br>
+        <input class="marks" id="Open Elective (Online Courses) Only through (NPTEL)" type="number" placeholder="Open Elective (Online Courses) Only through (NPTEL)" required><br>
+
+        <label>Internship (Industry/Research):-</label><br>
+        <input class="marks" id="Internship (Industry/Research)" type="number" placeholder="Internship (Industry/Research)" required><br>
+
+        <div class="btn">
+            <button id="check" autofocus>CHECK</button><br>
+            <button id="reset">RESET</button>
+        </div>
+    
+    </fieldset>
+    <fieldset>
+        <legend>OBTAINED</legend>
+        <label>TOTAL</label><br>
+        <input id="total" type="text" placeholder="TOTAL"><br>
+        <label>CGPA</label><br>
+        <input id="cgpa" type="number" placeholder="CGPA"><br>
+        <label>PERCENTAGE</label><br>
+        <input id="percentage" type="number" placeholder="PERCENTAGE">
+    </fieldset>
+    </form>
+
+    <script>
+        document.getElementById('check').addEventListener('click', function(e){
+
+            let m=document.getElementById("Professional Elective (Online Courses) Only through(NPTEL)").value;
+            let m1=document.getElementById("Open Elective (Online Courses) Only through (NPTEL)").value;
+            let m2=document.getElementById("Internship (Industry/Research)").value;
+
+            let total=parseInt(m)+parseInt(m1)+parseInt(m2);
+
+            let percentage=(total/800)*100;
+
+            document.getElementById('total').value=total;
+            document.getElementById('percentage').value=percentage;
+
+
+            function points(mark,credit){
+                let x=0;
+                if(mark>=90 && mark<=100){
+                    x=10;
+                    return x*credit;
+                }
+                else if(mark>=80 && mark<90){
+                    x=9;
+                    return x*credit;
+                }
+                else if(mark>=70 && mark<80){
+                    x=8;
+                    return x*credit;
+                }
+                else if(mark>=60 && mark<70){
+                    x=7;
+                    return x*credit;
+                }
+                else if(mark>=50 && mark<60){
+                    x=6;
+                    return x*credit;
+                }
+                else if(mark>=40 && mark<50){
+                    x=5;
+                    return x*credit;
+                }
+                else{
+                    return 0;
+                } 
+            }
+            let cgpa = points(m,3)+points(m1,3)+points(m2,10);
+            
+            document.getElementById('cgpa').value=cgpa/16;
+
+        })
+        document.getElementById('reset').addEventListener('click', function(e){
+            document.getElementById("myForm").reset();
+        })
+
+    </script>
+</body>
+</html>
